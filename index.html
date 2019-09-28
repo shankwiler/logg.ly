@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148891084-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-148891084-1');
+
+      /**
+      * Function that registers a click on an outbound link in Analytics.
+      * This function takes a valid URL string as an argument, and uses that URL string
+      * as the event label. Setting the transport method to 'beacon' lets the hit be sent
+      * using 'navigator.sendBeacon' in browser that support it.
+      */
+      var getOutboundLink = function(url) {
+        gtag('event', 'click', {
+          event_category: 'outbound',
+          event_label: url,
+          transport_type: 'beacon',
+          event_callback: function() {
+            document.location = url;
+          }
+        });
+      }
+    </script>
+
+    <title>logg.ly</title>
+    <style>
+      .redirect-block {
+        font-size: 2em;
+        text-align: center;
+      }
+      .loggly-link {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=UA-148891084-1"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <p class="redirect-block">
+      Did you mean <a href="http://www.loggly.com" class="loggly-link" onclick="getOutboundLink('http://www.loggly.com'); return false;">loggly.com</a>?
+    </p>
+    <p>This is an unofficial Lincoln Log fan page.</p>
+    <a href="mailto:kyleshankwiler@gmail.com">Contact</a>
+  </body>
+</html>
